@@ -1,0 +1,26 @@
+<?php
+$title = 'Edit Post';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+	$form->setAttribute('action', $this->url('post', array('action' => 'edit', 'id' => $post->getId())));
+	$form->setAttribute('class', 'form-horizontal');
+	
+	echo $this->ztbForm($form);
+?>
+
+<script type="text/javascript">
+        $(function() {
+            $('textarea[name="content"]').tinymce({
+                    script_url : '/js/tiny_mce/tiny_mce.js',
+                    theme : "advanced",
+                    plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras",
+                    // Theme options
+                    theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+                    theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup,code,|,insertdate,inserttime,preview,template",
+                    theme_advanced_resizing : true
+            });
+        });
+</script>

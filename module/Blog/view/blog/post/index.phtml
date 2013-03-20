@@ -1,0 +1,24 @@
+<?php
+$title = 'Posts';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><a href="<?php echo $this->url('post', array('action'=>'add'));?>">Add new blog post</a></p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Post</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($posts as $post) : ?>
+	    <tr>
+	        <td><?php echo $this->escapeHtml($post->getTitle());?></td>
+	        <td>
+	            <a href="<?php echo $this->url('post', array('action' => 'edit', 'id' => $post->getId())); ?>">Edit</a>
+	        </td>
+	        <td>
+	            <a href="<?php echo $this->url('post', array('action' => 'delete', 'id' => $post->getId())); ?>" onclick="return confirm('Are you sure?')">Delete</a>
+	        </td>
+	    </tr>
+    <?php endforeach; ?>
+</table>
